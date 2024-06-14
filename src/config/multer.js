@@ -15,10 +15,11 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'vidtube',
-    allowed_formats: ['mp4', 'avi', 'WEBM', 'Mkv'],
+    allowed_formats: ['mp4'],
   },
 });
 
 const upload = multer({ storage: storage });
 
 export default upload;
+

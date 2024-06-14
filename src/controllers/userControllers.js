@@ -1,7 +1,8 @@
 import cryptoHash from 'crypto';
 import User from '../models/user.model.js';
-import { signUpValidator } from '../../user.validator.js';
+import { signUpValidator, signInValidator } from '../../user.validator.js';
 import { formatZodError } from '../../errorMessage.js';
+import {generateToken} from '../utils/jwt.js'
 
  function hashValue(value) {
      const hash = cryptoHash.createHash('sha256');
@@ -34,7 +35,7 @@ export const signUp = async (req, res) => {
                 gender
             } = req.body
    
-            const encryption = hashValue(password, confirmPassword)
+            const encryption = hashValue(password)
             const newUser = new User({
                 userName,
                 password: encryption,

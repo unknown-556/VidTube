@@ -7,7 +7,7 @@ export const getvideos = async (req,res) => {
             res.status(400).json ({message:'No videos found in database'})
         }else {
             console.log({message:'videos found successfully',allvideos})
-            return res.status(200).json({ message: 'video found successfully', allvideo });
+            return res.status(200).json({ message: 'video found successfully', allvideos });
             // return res.json({allvideos})
         }
     

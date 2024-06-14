@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema(
             ref: "User",
             required: true,
         },
-        vid: {
+        video: {
             type: String,
         },
         likes: {

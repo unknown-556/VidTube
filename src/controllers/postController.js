@@ -29,17 +29,15 @@ export const createPost = async (req, res) => {
             console.error('Error uploading to Cloudinary:', error);
         } else {
             console.log('Upload successful. Cloudinary response:');
-            console.log('Video URL:', result.secure_url); 
+            console.log('video URL:', result.secure_url); 
             resolve(result);
         }
     }
 ;
 
-
-
         const post = new Post({
             ...req.body,
-            vid: result.secure_url,
+            video: result.secure_url,
             postedBy: user.name,
         });
 
