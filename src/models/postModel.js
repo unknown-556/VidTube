@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema(
         postedBy: {
             type: String,
             ref: "User",
-            // required: true,
+            required: true,
         },
         video: {
             type: String,
