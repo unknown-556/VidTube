@@ -30,9 +30,6 @@ export const signUp = async (req, res) => {
                 userName,
                 password,
                 email,
-                phoneNumber,
-                bio,
-                gender
             } = req.body
    
             const encryption = hashValue(password)
@@ -40,9 +37,6 @@ export const signUp = async (req, res) => {
                 userName,
                 password: encryption,
                 email,
-                phoneNumber,
-                bio,
-                gender
             })
             await newUser.save()
             res.status(200).json({message: 'User registered succesfully',newUser})

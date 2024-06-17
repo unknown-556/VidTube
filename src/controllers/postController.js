@@ -15,31 +15,20 @@ export const createPost = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
 
+
         if (!req.file) {
             throw new Error('No file uploaded');
         }
 
+        
+        console.log('Upload successful. Cloudinary response:', req.file);
 
-        console.log('Uploading file buffer:', req.file.buffer);
-
-     const result = await cloudinary.uploader.upload(req.file.path,
-    { resource_type: 'auto' });
-    (error, result) => {
-        if (error) {
-            console.error('Error uploading to Cloudinary:', error);
-        } else {
-            console.log('Upload successful. Cloudinary response:');
-            console.log('video URL:', result.secure_url); 
-            resolve(result);
-        }
-    }
-;
 
         const post = new Post({
-            ...req.body,
-            video: result.secure_url,
-            postedBy: user.name,
-        });
+      ...req.body,
+      video: req.file.path,
+      postedBy: user.userName,
+    });
 
         await post.save();
         res.status(201).send(post);

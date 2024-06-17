@@ -28,7 +28,7 @@ export const getvideo = async (req, res) => {
         } else {
             console.log('video found successfully', video);
             return res.status(200).json({ message: 'video found successfully', video });
-            // return res.json({article});
+            // return res.json({video});
             
         }
     } catch (error) {

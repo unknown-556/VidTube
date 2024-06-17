@@ -3,17 +3,12 @@ import mongoose from "mongoose";;
 const postSchema = new mongoose.Schema(
     {
         postedBy: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: "User",
-            required: true,
+            // required: true,
         },
         video: {
             type: String,
-        },
-        likes: {
-            type: [mongoose.Schema.Types.ObjectId],
-            ref: "User",
-            default: [],
         },
         replies: [
             {

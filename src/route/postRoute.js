@@ -5,7 +5,7 @@ import upload from "../config/multer.js";
 const router = express.Router()
 
 
-router.post("/post",auth, upload.single('video'), createPost)
+router.post("/post", auth, upload.single('video'), createPost)
 
 
 export default router
