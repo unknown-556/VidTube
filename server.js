@@ -16,14 +16,14 @@ const server = http.createServer(app)
 app.use(cors({origin:"*"}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use('/api/vidtube', router)
+app.use('/api/project', router)
 
 
 
 
 
 const startServer = async () => {
-   const PORT = process.env.PORT || 5505;
+   const PORT = process.env.PORT || 4456;
    connectDB();
    try {
        server.listen(PORT, () => {

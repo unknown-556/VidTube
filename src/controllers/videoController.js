@@ -7,8 +7,8 @@ export const getvideos = async (req,res) => {
             res.status(400).json ({message:'No videos found in database'})
         }else {
             console.log({message:'videos found successfully',allvideos})
-            return res.status(200).json({ message: 'video found successfully', allvideos });
-            // return res.json({allvideos})
+            // return res.status(200).json({ message: 'video found successfully', allvideos });
+            return res.json({allvideos})
         }
     
         }   catch (error) {
@@ -32,7 +32,7 @@ export const getvideo = async (req, res) => {
             
         }
     } catch (error) {
-        console.error('Error while getting article', error);
+        console.error('Error while getting video', error);
         return res.status(500).json({ message: error.message });
     }
 };
@@ -56,10 +56,28 @@ export const myvideo = async (req, res) => {
     }
 };
 
+export const related = async (req, res) => {
+    try {
+        const category = req.params.category; 
+        const video = await Post.find({ category: category});
+        if (!video) {
+            return res.status(404).json({ message: `No video with ID: ${category} found` });
+        } else {
+            console.log('video found successfully', video);
+            return res.status(200).json({ message: 'videos found successfully', video });
+            // return res.json({video});
+            
+        }
+    } catch (error) {
+        console.error('Error while getting videos', error);
+        return res.status(500).json({ message: error.message });
+    }
+};
+
 
 export const getRandomVideos = async (req, res, next) => {
     try {
-        const randomVideos = await Post.aggregate([{ $sample: { size: 3 } }]);
+        const randomVideos = await Post.aggregate([{ $sample: { size: 300 } }]);
         return res.status(200).json({ message: 'video found successfully', randomVideos });
             // return res.json({randomVideos})
     } catch (error) {
@@ -67,3 +85,4 @@ export const getRandomVideos = async (req, res, next) => {
         res.status(500).json({ message: error.message });
     }
 };
+

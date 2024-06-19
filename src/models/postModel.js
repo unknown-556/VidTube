@@ -10,25 +10,9 @@ const postSchema = new mongoose.Schema(
         video: {
             type: String,
         },
-        replies: [
-            {
-                userId: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "User",
-                    required: true,
-                },
-                text: {
-                    type: String,
-                    required: true,
-                },
-                userProfilePic: {
-                    type: String,
-                },
-                username: {
-                    type: String,
-                },
-            },
-        ],
+        category: {
+            type: String
+        },
     },
     {
         timestamps: true,
